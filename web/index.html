@@ -1,0 +1,28 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="https://unpkg.com/moment"></script>
+</head>
+
+<body>
+
+    <calendar></calendar>
+
+    <script data-src="components/calendar.tag" type="riot/tag"></script>
+
+    <script src="https://rawgit.com/riot/riot/master/riot%2Bcompiler.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous">
+    </script>
+
+    <script>
+        riot.compile(function () {
+            riot.mount('*', {});
+        })
+    </script>
+
+</body>
+
+</html>
