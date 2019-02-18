@@ -1,6 +1,6 @@
-<calendar onclick={ toggleDetail }>
+<calendar>
 
-    <day each={ day in days } displaytext='{ day.displayText }' ispast='{ day.isPast }' no-reorder />
+    <day each={ day in days } displaytext='{ day.displayText }' istoday='{ day.isToday }' isworkday='{ day.isWorkDay }' ispast='{ day.isPast }' no-reorder />
 
     <script>
         var self = this;
@@ -14,25 +14,19 @@
             for (var i = -14; i < 1000; i++) {
                 var momentDay = moment().add(i, 'days');
                 var displayText = momentDay.format('DD/MM');
+                var isToday = momentDay.isSame(moment(), 'day');
                 var isPast = momentDay.isBefore();
+                var isWorkDay = momentDay.day() !== 6 && momentDay.day() !== 0;
                 var d = {
                     displayText: displayText,
+                    isToday: isToday,
+                    isWorkDay: isWorkDay,
                     isPast: isPast
                 };
                 self.days.push(d);
             }
             self.update();
         });
-
-        toggleDetail(e) {
-            var growDiv = this.refs.grow;
-            if (growDiv.clientHeight) {
-                growDiv.style.height = 0;
-            } else {
-                var wrapper = this.refs.measuringWrapper;
-                growDiv.style.height = wrapper.clientHeight + "px";
-            }
-        }
     </script>
 
     <style>
